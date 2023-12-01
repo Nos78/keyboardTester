@@ -1,7 +1,7 @@
 # keyboardTester
-![keyboardTester app icon](./favicon.svg?raw=true&sanitize=true#right)
+![keyboardTester app icon](./favicon.svg?raw=true&sanitize=true&x=48#right)
 <div align="left">
-  <img src="./favicon.svg?raw=true&sanitize=true" width="48px">
+  <img src="./favicon.svg?raw=true&sanitize=true&x=48" width="48px">
 A simple a simple [JavaScript](https://en.wikipedia.org/wiki/JavaScript) web app to test individual keys on the attached keyboard. Attaching to the [keydown](https://www.w3schools.com/jsref/event_onkeydown.asp) and	[keypress](https://www.w3schools.com/jsref/event_onkeypress.asp) [events](https://www.w3schools.com/tags/ref_eventattributes.asp), the program waits for a key to be pressed on an attached keyboard.  If the key is working, the keydown event listener will fire an alert box containing the keycode of the key pressed; meanwhile, the keypress event fires a second alert box indicating the character being input.
 </div>
 
