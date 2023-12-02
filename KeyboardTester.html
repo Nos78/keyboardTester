@@ -46,7 +46,6 @@ document.onkeydown = function(e) {
 
 document.onkeypress = function(e) {
     if (!e) var e = window.event;
-
     if (e.keyCode) keycode = e.keyCode; // IE DOM
     else if (e.which) keycode = e.which; // Netscape DOM-
     var alertText = "(onkeypress) actual key output: " + keycode + " (the " + String.fromCharCode(keycode) + " character)";
@@ -54,6 +53,7 @@ document.onkeypress = function(e) {
 }
 </script>
 <head>
+  <base href="https://raw.githubusercontent.com/Nos78/keyboardTester/main/">
   <title>Keyboard Tester v0.2 ― thebotfactory.net</title>
   <link rel="shortcut icon" type="image/svg+xml" href="favicon.svg"/>
   <meta charset="UTF-8">
