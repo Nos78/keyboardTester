@@ -54,15 +54,15 @@ document.onkeypress = function(e) {
 }
 </script>
 <head>
-<title>Keyboard Tester v0.2 ― thebotfactory.net</title>
-<link rel="shortcut icon" type="image/svg+xml" href="favicon.svg"/>
-<meta charset="UTF-8">
-<meta name="keywords" content="JavaScript, Keyboard, Scancode, keycode, ASCII, app, character, 
-keypress, keydown, onkeypress, onkeydown, CharCode, event, which, coding, test">
-<meta name="decsription" content="Free keyboard tester Javascript app, KeyboardTester.html v0.2, displays the keycode of the hardware key pressed on a connected keyboard and its related ASCII value & output character. Licensed under GPL v3 (see page content for details)">
-<meta name="author" content="Noscere">
-<!--Important tag for setting the viewable area based on viewers device screen size-->
-<meta name="viewport" content="width-device-width, initial-scale=1.0">
+  <title>Keyboard Tester v0.2 ― thebotfactory.net</title>
+  <link rel="shortcut icon" type="image/svg+xml" href="favicon.svg"/>
+  <meta charset="UTF-8">
+  <meta name="keywords" content="JavaScript, Keyboard, Scancode, keycode, ASCII, app, character, 
+  keypress, keydown, onkeypress, onkeydown, CharCode, event, which, coding, test">
+  <meta name="decsription" content="Free keyboard tester Javascript app, KeyboardTester.html v0.2, displays the keycode of the hardware key pressed on a connected keyboard and its related ASCII value & output character. Licensed under GPL v3 (see page content for details)">
+  <meta name="author" content="Noscere">
+  <!--Important tag for setting the viewable area based on viewers device screen size-->
+  <meta name="viewport" content="width-device-width, initial-scale=1.0">
 </head>
 
 <body>
@@ -78,60 +78,62 @@ keypress, keydown, onkeypress, onkeydown, CharCode, event, which, coding, test">
 <br/><hr/>
 <h3><b><u>Instructions</u>:</b></h3>
 <p>&nbsp;Press any key on your keyboard. If the key is working, you will see a message box containing:<br/>
-&nbsp;&nbsp;• The physical code of the key pressed.<br/>
-&nbsp;&nbsp;• The glyph representing that key.<br/>
-<br/>
-&nbsp;A second message box will alert you to the character you entered (e.g. You pressed the ‘A’ key, without CAPS or shift. You expect to see an ‘a’). The message box contains:<br/> 
-&nbsp;&nbsp;• The actual character (glyph) being input/displayed.<br/>
-&nbsp;&nbsp;• The ASCII code of this character.<br/>
+  &nbsp;&nbsp;• The physical code of the key pressed.<br/>
+  &nbsp;&nbsp;• The glyph representing that key.<br/>
+  <br/>
+  &nbsp;A second message box will alert you to the character you entered (e.g. You pressed the ‘A’ key, without CAPS or shift. You expect to see an ‘a’). The message box contains:<br/> 
+  &nbsp;&nbsp;• The actual character (glyph) being input/displayed.<br/>
+  &nbsp;&nbsp;• The ASCII code of this character.<br/>
 </p>
 <p>&nbsp;<b>NOTE:</b> The DOM for key entry is...messy! Beside being engine-dependent, the keyup and keydown events contain the code of 
-the physical key, which may not be the same as what you entered. It also contains the combination of modifier keys held, such as 
-SHIFT, CTRL, etc. It is the combination of key code and modifiers that produces the actual character. However, the keypress event
-contains the code of the actual character entered. Generally, when collecting user input, for example, for a given string of text, 
-you’ll be wanting to collect the actual characters—this means onkeypress is the best event to attach your listener function.<br/>
-<br/><b>Why does the keydown event show a capital letter when a lowercase one as been input?</b> The key down event, as explained above, 
-represents the physical key. QWERTY (and all other Latin alpha-numeric keyboards) keys have capital letters printed on them. Thus the 
-event, representing the physical key, outputs the code for a capital letter. The keypress event gives the actual character code for 
-the same key, as it combines the physical key code and any relevant modifiers pressed (shift, CAPS lock, etc.) to produce the 
-inputted character. This is why the message box explicitly uses the word "key" for the physical key, where the letter is always 
-capital, and "character" when referring to the actual input.</p>
+  the physical key, which may not be the same as what you entered. It also contains the combination of modifier keys held, such as 
+  SHIFT, CTRL, etc. It is the combination of key code and modifiers that produces the actual character. However, the keypress event
+  contains the code of the actual character entered. Generally, when collecting user input, for example, for a given string of text, 
+  you’ll be wanting to collect the actual characters—this means onkeypress is the best event to attach your listener function.<br/>
+  <br/><b>Why does the keydown event show a capital letter when a lowercase one as been input?</b> The key down event, as explained above, 
+  represents the physical key. QWERTY (and all other Latin alpha-numeric keyboards) keys have capital letters printed on them. Thus the 
+  event, representing the physical key, outputs the code for a capital letter. The keypress event gives the actual character code for 
+  the same key, as it combines the physical key code and any relevant modifiers pressed (shift, CAPS lock, etc.) to produce the 
+  inputted character. This is why the message box explicitly uses the word "key" for the physical key, where the letter is always 
+  capital, and "character" when referring to the actual input.</p>
 <hr/>
 <p>This JavaScript web-app uses the following JavaScript code, which you can copy:<br/>
-<code>
-<script>
-// TODO Re-factor, we are duplicating code in both events...
-// keycode logic & alert output can be reduced to common func
-document.onkeydown = function(e) {
-    if (!e) var e = window.event;
-    if (e.keyCode) keycode = e.keyCode;
-    else if (e.which) keycode = e.which;
-    var alertText = "(onkeydown) physical key pressed: " + keycode + " (the " + String.fromCharCode(keycode) + " key)";
-    alert(alertText);
-//return false;
-}
+  <code>
+    <script>
+      // TODO Re-factor, we are duplicating code in both events...
+      // keycode logic & alert output can be reduced to common func
+      document.onkeydown = function(e) {
+        if (!e) var e = window.event;
+        if (e.keyCode) keycode = e.keyCode;
+        else if (e.which) keycode = e.which;
+        var alertText = "(onkeydown) physical key pressed: " + keycode + " (the " + String.fromCharCode(keycode) + " key)";
+        alert(alertText);
+        //return false;
+      }
 
-document.onkeypress = function(e) {
-    if (!e) var e = window.event;
-
-    if (e.keyCode) keycode = e.keyCode; // IE DOM
-    else if (e.which) keycode = e.which; // Netscape DOM-
-    var alertText = "(onkeypress) actual key output: " + keycode + " (the " + String.fromCharCode(keycode) + " character)";
-    alert(alertText);
-}
-</script>
-</code>
+      document.onkeypress = function(e) {
+        if (!e) var e = window.event;
+        if (e.keyCode) keycode = e.keyCode; // IE DOM
+        else if (e.which) keycode = e.which; // Netscape DOM-
+        var alertText = "(onkeypress) actual key output: " + keycode + " (the " + String.fromCharCode(keycode) + " character)";
+        alert(alertText);
+      }
+    </script>
+  </code>
+</p>
 <hr/>
 <footer>
-<center>
-<table style="width:90%;text-align:center;border-collapse:collapse;background-color:Black;color:White;">
-  <tr>
-    <th>&nbsp;<a href="https://thebotfactory.net">theBotFactory.net</a> supports <a href="https://fsf.org">Free Software</a></th>
-    <th>&nbsp;© thebotfactory 2023. Released under GPL v3 (see above)</th></tr>
-  <tr style="background-color:gold;color:Black">
-    <td>written by noscere</td><td>Keyboard Tester — output textCode of keys pressed</td></tr>
-</table>
-</center>
+  <center>
+  <table style="width:90%;text-align:center;border-collapse:collapse;background-color:Black;color:White;">
+    <tr>
+      <th>&nbsp;<a href="https://thebotfactory.net">theBotFactory.net</a> supports <a href="https://fsf.org">Free Software</a></th>
+      <th>&nbsp;© thebotfactory 2023. Released under GPL v3 (see above)</th>
+    </tr>
+    <tr style="background-color:gold;color:Black">
+      <td>written by noscere</td><td>Keyboard Tester — output textCode of keys pressed</td>
+    </tr>
+  </table>
+  </center>
 </footer>
 </body>
 </html>
